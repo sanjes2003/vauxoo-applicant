@@ -37,3 +37,30 @@ INSERT INTO employee (id, first_name, last_name,id_department) VALUES (14302421,
 INSERT INTO employee (id, first_name, last_name,id_department) VALUES (25870668, 'STUARD', 'ROMERO',5);
 INSERT INTO employee (id, first_name, last_name,id_department) VALUES (22738281, 'BRYAN J.', 'PEREZ G.',6);
 INSERT INTO employee (id, first_name, last_name,id_department) VALUES (13245672, 'JAIME', 'GARCES',2);
+-- CAMBIOS DE HOBBIES
+CREATE TABLE employee_hobby (
+    id int NOT NULL,
+    name varchar(255),
+    description varchar(255),
+    PRIMARY KEY (id)
+);
+CREATE TABLE employees_hobbies (
+    id_hobbies int NOT NULL,
+    id_employee int NOT NULL,
+    id_hobby int NOT NULL,
+    PRIMARY KEY (id_hobbies),
+    FOREIGN KEY (id_employee) REFERENCES employee(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_hobby) REFERENCES employee_hobby(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+INSERT INTO employee_hobby (id, name, description) VALUES (1, 'CINE', 'IR TODOS LOS FINES DE SEMANA Y DISFRUTAR DE ALGUNA PELICULA TAQUILLERA');
+INSERT INTO employee_hobby (id, name, description) VALUES (2, 'BASKETT', 'PRACTICA DE BALONCESTO COMO RUTINA DIARIA');
+INSERT INTO employee_hobby (id, name, description) VALUES (3, 'PLAYA', 'IR TODOS LOS FINES DE SEMANA Y DISFRUTAR DEL MAR Y EL SOL');
+INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (1,14302421, 1);
+INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (2, 14302421, 3);
+INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (3, 25870668, 1);
+INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (4, 25870668, 2);
+INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (5, 22738281, 1);
+INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (6, 22738281, 2);
+INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (7, 13245672, 3);
+INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (8, 13245672, 2);
+INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (9, 13245672, 1);
