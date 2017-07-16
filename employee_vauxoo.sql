@@ -64,3 +64,11 @@ INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (6, 227
 INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (7, 13245672, 3);
 INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (8, 13245672, 2);
 INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (9, 13245672, 1);
+-- ALTER TABLE DE EMPLOYEES
+ALTER TABLE employee ADD is_boss INT NULL;
+UPDATE employee SET is_boss = 24567432 WHERE id_department = 3;
+UPDATE employee SET is_boss = 14302453 WHERE id_department = 5;
+UPDATE employee SET is_boss = 4567432 WHERE id_department = 6;
+INSERT INTO employee (id, first_name, last_name,id_department,is_boss) VALUES (24567432, 'GUSTAVO A.', 'GARCES S.',3,NULL);
+INSERT INTO employee (id, first_name, last_name,id_department,is_boss) VALUES (14302453, 'ELENA M', 'FURTADO',5,NULL);
+INSERT INTO employee (id, first_name, last_name,id_department,is_boss) VALUES (4567432, 'GUSTAVO A.', 'GARCES S.',6,NULL);
