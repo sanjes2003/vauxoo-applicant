@@ -1,16 +1,17 @@
 """
-Your module documentation here
+# CREADO POR: SANDRA GARCES
+# FECHA: 15-JUL-2017
+# CLASE: calculator_class
+# METODOS:
+#	NOMBRE: sum
 """
-
-
 class CalculatorClass(object):
-    """
-    Your class documentation here
-    """
-
+    #	DESCRIPCION: DEVUELVE LA SUMA DE UNA LISTA DE NUMEROS 
     def sum(self, num_list):
         """
-        Your method documentation here
+        METODO PRINCIPAL QUE REALIZA LA SUMA DE LA LISTA DE NUMEROS
         """
-        # your sum code here
-        return "not implement yet"  # Remove this dummy line
+        sum = 0
+        for i in num_list:
+        	sum += i
+        return sum
