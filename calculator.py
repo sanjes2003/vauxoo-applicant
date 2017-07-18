@@ -14,7 +14,7 @@ class CalculatorClass(object):
         VARIABLE SUM ES EL RESULTADO
         A RETORNAR
         """
-        sum = 0
+        acum = 0
         for number in num_list:
-            sum = sum + number
-        return sum
+            acum = acum + number
+        return acum
