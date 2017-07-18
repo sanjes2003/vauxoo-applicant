@@ -3,6 +3,12 @@
 --       You can create database locally to test it.
 --       Consider add ';' at end sentence.
 
+CREATE TABLE employee_department (
+    id int NOT NULL,
+    name varchar(255),
+    description varchar(255),
+    PRIMARY KEY (id)
+);
 CREATE TABLE employee (
     id int NOT NULL,
     first_name varchar(255),
@@ -11,14 +17,6 @@ CREATE TABLE employee (
     PRIMARY KEY (id),
     FOREIGN KEY (id_department) REFERENCES employee_department(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
-
-CREATE TABLE employee_department (
-    id int NOT NULL,
-    name varchar(255),
-    description varchar(255),
-    PRIMARY KEY (id)
-);
-
 CREATE TABLE employee_hobby (
     id int NOT NULL,
     first_name varchar(255),
