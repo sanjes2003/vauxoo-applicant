@@ -17,14 +17,7 @@ CREATE TABLE employee (
     PRIMARY KEY (id),
     FOREIGN KEY (id_department) REFERENCES employee_department(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
-CREATE TABLE employee_hobby (
-    id int NOT NULL,
-    first_name varchar(255),
-    last_name varchar(255),
-    id_department int,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_department) REFERENCES employee_department(id) ON DELETE SET NULL ON UPDATE CASCADE
-);
+
 INSERT INTO employee_department (id, name, description) VALUES (1, 'PERSONAL', 'RECURSOS HUMANOS');
 INSERT INTO employee_department (id, name, description) VALUES (2, 'OPERACIONES', 'DEPARTAMENTO OPERACIONES');
 INSERT INTO employee_department (id, name, description) VALUES (3, 'INGENIERIA', 'DEPARTAMENTO DE DISENO Y ARQUITECTURA');
@@ -35,12 +28,14 @@ INSERT INTO employee (id, first_name, last_name,id_department) VALUES (14302421,
 INSERT INTO employee (id, first_name, last_name,id_department) VALUES (25870668, 'STUARD', 'ROMERO',5);
 INSERT INTO employee (id, first_name, last_name,id_department) VALUES (22738281, 'BRYAN J.', 'PEREZ G.',6);
 INSERT INTO employee (id, first_name, last_name,id_department) VALUES (13245672, 'JAIME', 'GARCES',2);
--- CAMBIOS DE HOBBIES
+--
 CREATE TABLE employee_hobby (
     id int NOT NULL,
-    name varchar(255),
-    description varchar(255),
-    PRIMARY KEY (id)
+    first_name varchar(255),
+    last_name varchar(255),
+    id_department int,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_department) REFERENCES employee_department(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
 INSERT INTO employee_hobby (id, name, description) VALUES (1, 'CINE', 'IR TODOS LOS FINES DE SEMANA Y DISFRUTAR DE ALGUNA PELICULA TAQUILLERA');
 INSERT INTO employee_hobby (id, name, description) VALUES (2, 'BASKETT', 'PRACTICA DE BALONCESTO COMO RUTINA DIARIA');
