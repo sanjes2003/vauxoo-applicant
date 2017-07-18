@@ -7,7 +7,7 @@ class CalculatorClass(object):
 	#DESCRIPCION: DEVUELVE LA SUMA DE UNA LISTA DE NUMEROS 
 	def sum(self, num_list):
 		#METODO PRINCIPAL QUE REALIZA LA SUMA DE LA LISTA DE NUMEROS
-		SUM = 0
-		for VAR_I in num_list:
-			SUM += VAR_I
-		return SUM
+		sum = 0
+		for i in num_list:
+			sum += i
+		return sum

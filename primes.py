@@ -12,7 +12,7 @@ class PrimeClass(object):
 		# LOS NUMEROS 0 Y 1 NO SON PRIMOS, SE VALIDA ANTES DE ENTRAR AL CICLO
 		if (num_int != 0) and (num_int != 1):
 			middle = int(num_int / 2)
-			for VAR_I in range (2, (middle + 1)):
+			for i in range (2, (middle + 1)):
 				if num_int % i == 0:
 					return False
 			return True
