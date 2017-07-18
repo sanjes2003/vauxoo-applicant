@@ -7,11 +7,11 @@ is_prime
 """
 class PrimeClass(object):
 	def is_prime(self, num_int):
-	num_int = abs(num_int)
-	if (num_int != 0) and (num_int != 1):
-		middle = int(num_int / 2)
-		for i in range (2,(middle + 1)):
-			if num_int % i == 0:
-				return False
+		num_int = abs(num_int)
+		if (num_int != 0) and (num_int != 1):
+			middle = int(num_int / 2)
+			for i in range (2,(middle + 1)):
+				if num_int % i == 0:
+					return False
 			return True
-	return False
+		return False
