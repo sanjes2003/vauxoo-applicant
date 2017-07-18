@@ -42,6 +42,9 @@ CREATE TABLE employee_hobby (
     description varchar(255),
     PRIMARY KEY (id)
 );
+INSERT INTO employee_hobby (id, name, description) VALUES (1, 'CINE', 'IR TODOS LOS FINES DE SEMANA Y DISFRUTAR DE ALGUNA PELICULA TAQUILLERA');
+INSERT INTO employee_hobby (id, name, description) VALUES (2, 'BASKETT', 'PRACTICA DE BALONCESTO COMO RUTINA DIARIA');
+INSERT INTO employee_hobby (id, name, description) VALUES (3, 'PLAYA', 'IR TODOS LOS FINES DE SEMANA Y DISFRUTAR DEL MAR Y EL SOL');
 CREATE TABLE employees_hobbies (
     id_hobbies int NOT NULL,
     id_employee int NOT NULL,
@@ -50,9 +53,6 @@ CREATE TABLE employees_hobbies (
     FOREIGN KEY (id_employee) REFERENCES employee(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (id_hobby) REFERENCES employee_hobby(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-INSERT INTO employee_hobby (id, name, description) VALUES (1, 'CINE', 'IR TODOS LOS FINES DE SEMANA Y DISFRUTAR DE ALGUNA PELICULA TAQUILLERA');
-INSERT INTO employee_hobby (id, name, description) VALUES (2, 'BASKETT', 'PRACTICA DE BALONCESTO COMO RUTINA DIARIA');
-INSERT INTO employee_hobby (id, name, description) VALUES (3, 'PLAYA', 'IR TODOS LOS FINES DE SEMANA Y DISFRUTAR DEL MAR Y EL SOL');
 INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (1,14302421, 1);
 INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (2, 14302421, 3);
 INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (3, 25870668, 1);
