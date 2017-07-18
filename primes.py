@@ -6,18 +6,15 @@ METODOS:
 is_prime
 """
 class PrimeClass(object):
-   """
-   CLASE PRIME retorna True
-   si el numero es Primo
-   y False en caso contrario
-   """
+    """
+    CLASE PRIME retorna True
+    si el numero es Primo
+    y False en caso contrario
+    """
     def is_prime(self, num_int):
-    	"""
-        METODO is_prime valida si
-        el numero suministrado es positivo
-        luego verifica si es distinto a 0
-        y a 1, por ultimo realiza un ciclo
-        hasta encontrar si es primo 
+        """
+        Metodo valida si el numero es: positivo
+        y si es distinto a 0 y a 1
         """
         num_int = abs(num_int)
         if (num_int != 0) and (num_int != 1):

@@ -6,10 +6,8 @@ METODOS:
 NOMBRE: sum
 """
 class CalculatorClass(object):
-	"""
-	CON UN CICLO FOR SE SUMA EN
-    UNA VARIABLE TODOS LOS ELEMNTOS
-    DE LA LISTA SUMINISTRADA
+    """
+    En un ciclo For se acumula la suma
     """
     def sum(self, num_list):
         """
