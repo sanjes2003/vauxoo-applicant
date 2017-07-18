@@ -8,6 +8,6 @@ NOMBRE: sum
 class CalculatorClass(object):
 	def sum(self, num_list):
 		sum = 0
-		for i in num_list:
-			sum += i
+		for number in num_list:
+			sum = sum + number
 		return sum
