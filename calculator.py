@@ -6,7 +6,16 @@ METODOS:
 NOMBRE: sum
 """
 class CalculatorClass(object):
+	"""
+	CON UN CICLO FOR SE SUMA EN
+    UNA VARIABLE TODOS LOS ELEMNTOS
+    DE LA LISTA SUMINISTRADA
+    """
     def sum(self, num_list):
+        """
+        VARIABLE SUM ES EL RESULTADO
+        A RETORNAR
+        """
         sum = 0
         for number in num_list:
             sum = sum + number
