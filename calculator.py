@@ -5,6 +5,8 @@ CLASE: calculator_class
 METODOS:
 NOMBRE: sum
 """
+
+
 class CalculatorClass(object):
     """
     En un ciclo For se acumula la suma

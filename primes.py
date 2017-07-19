@@ -5,6 +5,8 @@ CLASE: prime_class
 METODOS:
 is_prime
 """
+
+
 class PrimeClass(object):
     """
     CLASE PRIME retorna True
