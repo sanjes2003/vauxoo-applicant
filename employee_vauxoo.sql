@@ -1,65 +1,59 @@
--- Your sql code in this file
--- NOTE: Please, don't add sentence to create database in this script file.
---       You can create database locally to test it.
---       Consider add ';' at end sentence.
-
 CREATE TABLE employee_department (
-    id int NOT NULL,
-    name varchar(255),
-    description varchar(255),
-    PRIMARY KEY (id)
-);
-CREATE TABLE employee (
-    id int NOT NULL,
-    first_name varchar(255),
-    last_name varchar(255),
-    id_department int,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_department) REFERENCES employee_department(id) ON DELETE SET NULL ON UPDATE CASCADE
-);
+ 	id          serial,
+ 	name        varchar (50) NOT NULL,
+ 	description varchar (50),
+ 	CONSTRAINT  employee_department_pkey PRIMARY KEY (id)
+ );
 
-INSERT INTO employee_department (id, name, description) VALUES (1, 'PERSONAL', 'RECURSOS HUMANOS');
-INSERT INTO employee_department (id, name, description) VALUES (2, 'OPERACIONES', 'DEPARTAMENTO OPERACIONES');
-INSERT INTO employee_department (id, name, description) VALUES (3, 'INGENIERIA', 'DEPARTAMENTO DE DISENO Y ARQUITECTURA');
-INSERT INTO employee_department (id, name, description) VALUES (4, 'FINANZAS', 'DEPARTAMENTO DE FINANZAS Y CUENTAS');
-INSERT INTO employee_department (id, name, description) VALUES (5, 'CONTABILIDAD', 'DEPARTAMENTO DE CONTABILIDAD');
-INSERT INTO employee_department (id, name, description) VALUES (6, 'SEGURIDAD', 'DEPARTAMENTO DE SEGURIDAD Y PREVENCION DE ACCIDENTES');
-INSERT INTO employee (id, first_name, last_name,id_department) VALUES (14302421, 'SANDRA P.', 'GARCES S.',3);
-INSERT INTO employee (id, first_name, last_name,id_department) VALUES (25870668, 'STUARD', 'ROMERO',5);
-INSERT INTO employee (id, first_name, last_name,id_department) VALUES (22738281, 'BRYAN J.', 'PEREZ G.',6);
-INSERT INTO employee (id, first_name, last_name,id_department) VALUES (13245672, 'JAIME', 'GARCES',2);
---
-CREATE TABLE employee_hobby (
-    id int NOT NULL,
-    name varchar(255),
-    description varchar(255),
-    PRIMARY KEY (id)
-);
-INSERT INTO employee_hobby (id, name, description) VALUES (1, 'CINE', 'IR TODOS LOS FINES DE SEMANA Y DISFRUTAR DE ALGUNA PELICULA TAQUILLERA');
-INSERT INTO employee_hobby (id, name, description) VALUES (2, 'BASKETT', 'PRACTICA DE BALONCESTO COMO RUTINA DIARIA');
-INSERT INTO employee_hobby (id, name, description) VALUES (3, 'PLAYA', 'IR TODOS LOS FINES DE SEMANA Y DISFRUTAR DEL MAR Y EL SOL');
-CREATE TABLE employees_hobbies (
-    id_hobbies int NOT NULL,
-    id_employee int NOT NULL,
-    id_hobby int NOT NULL,
-    PRIMARY KEY (id_hobbies),
-    FOREIGN KEY (id_employee) REFERENCES employee(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (id_hobby) REFERENCES employee_hobby(id) ON DELETE CASCADE ON UPDATE CASCADE
-);
-INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (1,14302421, 1);
-INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (2, 14302421, 3);
-INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (3, 25870668, 1);
-INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (4, 25870668, 2);
-INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (5, 22738281, 1);
-INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (6, 22738281, 2);
-INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (7, 13245672, 3);
-INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (8, 13245672, 2);
-INSERT INTO employees_hobbies (id_hobbies, id_employee, id_hobby) VALUES (9, 13245672, 1);
--- ALTER TABLE DE EMPLOYEES
-ALTER TABLE employee ADD is_boss INT NULL;
-UPDATE employee SET is_boss = 24567432 WHERE id_department = 3;
-UPDATE employee SET is_boss = 14302453 WHERE id_department = 5;
-UPDATE employee SET is_boss = 4567432 WHERE id_department = 6;
-INSERT INTO employee (id, first_name, last_name,id_department,is_boss) VALUES (24567432, 'GUSTAVO A.', 'GARCES S.',3,NULL);
-INSERT INTO employee (id, first_name, last_name,id_department,is_boss) VALUES (14302453, 'ELENA M', 'FURTADO',5,NULL);
-INSERT INTO employee (id, first_name, last_name,id_department,is_boss) VALUES (4567432, 'GUSTAVO A.', 'GARCES S.',6,NULL);
+  CREATE TABLE employee (
+ 	id         serial,
+ 	first_name varchar (50) NOT NULL,
+ 	last_name  varchar (50) NOT NULL,
+ 	employee_department_id integer NOT NULL,
+ 	manager_id serial NOT NULL,
+   	CONSTRAINT employee_pkey PRIMARY KEY (id),
+   	FOREIGN KEY (employee_department_id) REFERENCES employee_department (id),
+   	FOREIGN KEY (manager_id) REFERENCES employee
+       	ON DELETE CASCADE ON UPDATE CASCADE
+  );
+
+  CREATE TABLE employee_hobby (
+ 	id          serial,
+ 	name        varchar (50) NOT NULL,
+ 	description varchar (50),
+ 	CONSTRAINT  employee_hobby_pkey PRIMARY KEY (id)
+ );
+
+ CREATE TABLE employees_hobbies (
+ 	employee_id       serial,
+ 	employee_hobby_id integer NOT NULL,
+ 	FOREIGN KEY (employee_id) REFERENCES employee (id),
+ 	FOREIGN KEY (employee_hobby_id) REFERENCES employee_hobby (id)
+  );
+
+  ...
+
+ INSERT INTO employee_department (name, description) VALUES ('PERSONAL', 'Departamento de RRHH');
+ INSERT INTO employee_department (name, description) VALUES ('CYP', 'Calidad y Procesos');
+ INSERT INTO employee_department (name, description) VALUES ('CYS', 'Comunicacion y Soporte');
+ INSERT INTO employee_department (name, description) VALUES ('ADMIN', 'Administracion');
+ INSERT INTO employee_department (name, description) VALUES ('BI', 'Bienes');
+ INSERT INTO employee_department (name, description) VALUES ('Finanzas', 'Administracion y finanzas');
+
+ INSERT INTO employee (first_name, last_name, employee_department_id, manager_id ) VALUES ('Sandra', 'Garces','1','1');
+ INSERT INTO employee (first_name, last_name, employee_department_id, manager_id ) VALUES ('Stuard', 'Romero','2','1');
+ INSERT INTO employee (first_name, last_name, employee_department_id, manager_id ) VALUES ('Bryan', 'Perola','4','1');
+ INSERT INTO employee (first_name, last_name, employee_department_id, manager_id ) VALUES ('Diva', 'Diaz','4','1');
+
+ INSERT INTO employee_hobby (name, description) VALUES ('Natacion', 'Agua Sol y Arena');
+ INSERT INTO employee_hobby (name, description) VALUES ('Basket', 'Basketball');
+ INSERT INTO employee_hobby (name, description) VALUES ('Zumba', 'Bailar y Drenar');
+
+ INSERT INTO employees_hobbies VALUES (1, 2);
+ INSERT INTO employees_hobbies VALUES (1, 1);
+ INSERT INTO employees_hobbies VALUES (2, 3);
+ INSERT INTO employees_hobbies VALUES (2, 1);
+ INSERT INTO employees_hobbies VALUES (3, 1);
+ INSERT INTO employees_hobbies VALUES (3, 2);
+ INSERT INTO employees_hobbies VALUES (4, 1);
+ INSERT INTO employees_hobbies VALUES (4, 3);
